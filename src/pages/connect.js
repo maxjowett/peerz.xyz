@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 const socket = io('http://www.api.peerz.xyz');
 
-const Index = () => {
+const Connect = () => {
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
 
@@ -19,6 +19,7 @@ const Index = () => {
 
   const handleStream = stream => {
     const peer = new Peer({
+      initiator: true,
       stream,
       trickle: false,
       config: {
@@ -57,4 +58,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Connect;
