@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
-const socket = io('https://www.api.peerz.xyz');
+const socket = io('http://www.api.peerz.xyz');
 
 const Index = () => {
   const localVideoRef = useRef(null);
@@ -51,7 +51,7 @@ const Index = () => {
   return (
     <div>
       <h1>WebRTC</h1>
-      <video ref={localVideoRef} height="180" autoPlay />
+      <video ref={localVideoRef} height="180" muted autoPlay />
       <video ref={remoteVideoRef} height="180" autoPlay />
     </div>
   );
