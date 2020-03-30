@@ -1,0 +1,25 @@
+{
+  "name": "peerz.xyz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxjowett/peerz.xyz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxjowett/peerz.xyz/issues"
+  },
+  "homepage": "https://github.com/maxjowett/peerz.xyz#readme",
+  "dependencies": {
+    "gatsby": "^2.20.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
