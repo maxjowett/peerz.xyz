@@ -1,0 +1,56 @@
+.rundown {
+  //margin-top: 1rem;
+}
+
+.rundown__header {
+  //font-size: 1rem;
+}
+
+.rundown__step-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
+}
+
+.rundown__step {
+  height: 16rem;
+}
+
+.rundown__step_img {
+  padding-top: 2rem;
+}
+
+.rundown__step_header {
+  font-size: 2.2rem;
+  font-style: italic;
+  margin-top: 0.8rem;
+}
+
+.rundown__step_details {
+  font-family: 'Maison Neue Mono', monospace;
+  font-size: 0.9rem;
+}
+
+#step01 {
+  background-image: url('../assets/images/01.svg');
+  //background-color: #9d9d9d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-cover: cover;
+}
+
+#step02 {
+  background-image: url('../assets/images/02.svg');
+  //background-color: #9d9d9d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-cover: cover;
+}
+
+#step03 {
+  background-image: url('../assets/images/03.svg');
+  //background-color: #9d9d9d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-cover: cover;
+}

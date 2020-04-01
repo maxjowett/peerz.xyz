@@ -29,12 +29,20 @@
 
 html {
   min-height: 100vh;
-  //background: radial-gradient(rgba(45, 45, 45, 0.9), rgba(28, 28, 28, 0.97)),
-  //url('../assets/images/wave_texture.jpg');
-  //background-repeat: no-repeat;
-  //background-size: cover;
+  background: radial-gradient(rgba(45, 45, 45, 0.9), rgba(28, 28, 28, 0.97)),
+    url('../assets/images/wave_texture.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: 'Maison Neue', 'Helvetica Neue', Helvetica, Arial;
-  color: #eaeaea;
+  color: #ededed;
+}
+
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
 }
 
 .g-row {

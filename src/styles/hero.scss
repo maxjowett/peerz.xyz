@@ -1,0 +1,15 @@
+.hero {
+  display: grid;
+  align-items: center;
+  height: 32rem;
+}
+
+.hero__header {
+  width: 66%;
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.hero__subheader {
+  font-family: 'Maison Neue Mono';
+}
