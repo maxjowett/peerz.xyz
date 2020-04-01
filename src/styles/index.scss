@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: bold;
+  font-style: normal;
+  src: url('../assets/fonts/MaisonNeue-Bold.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: bold;
+  font-style: italic;
+  src: url('../assets/fonts/MaisonNeue-BoldItalic.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Maison Neue Mono';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../assets/fonts/MaisonNeue-Mono.ttf');
+  font-display: swap;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  min-height: 100vh;
+  //background: radial-gradient(rgba(45, 45, 45, 0.9), rgba(28, 28, 28, 0.97)),
+  //url('../assets/images/wave_texture.jpg');
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  font-family: 'Maison Neue', 'Helvetica Neue', Helvetica, Arial;
+  color: #eaeaea;
+}
+
+.g-row {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.g-button-primary {
+  font-family: inherit;
+  font-size: 20px;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 12px 16px;
+  background-color: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 61, 48),
+    rgb(255, 43, 97)
+  );
+}
+
+.g-button-primary:hover {
+  color: rgb(255, 255, 255);
+}
+
+.g-button-primary:focus {
+  outline: 0;
+}
+
+.g-button-primary:active {
+  transform: scale(0.99);
+}

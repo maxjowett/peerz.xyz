@@ -1,1 +1,3 @@
-plugins: ['gatsby-plugin-sass'];
+module.exports = {
+  plugins: ['gatsby-plugin-sass']
+};
