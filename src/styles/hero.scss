@@ -13,3 +13,31 @@
 .hero__subheader {
   font-family: 'Maison Neue Mono';
 }
+
+@media only screen and (max-width: 600px) {
+  .hero__header {
+    width: 100%;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .hero__header {
+    width: 100%;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .hero__header {
+    width: 80%;
+    font-size: 2.4rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hero__header {
+    width: 66%;
+    font-size: 3rem;
+  }
+}

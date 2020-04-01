@@ -1,3 +1,5 @@
+@import 'colors';
+
 @font-face {
   font-family: 'Maison Neue';
   font-weight: bold;
@@ -22,19 +24,39 @@
   font-display: swap;
 }
 
-* {
+*,
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
+body {
   min-height: 100vh;
   background: radial-gradient(rgba(45, 45, 45, 0.9), rgba(28, 28, 28, 0.97)),
     url('../assets/images/wave_texture.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  font-size: 16px;
   font-family: 'Maison Neue', 'Helvetica Neue', Helvetica, Arial;
-  color: #ededed;
+  color: $primary-white;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0 32px 0 32px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    padding: 0 32px 0 32px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    padding: 0 32px 0 32px;
+  }
 }
 
 ::selection {

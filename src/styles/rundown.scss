@@ -1,5 +1,6 @@
 .rundown {
   //margin-top: 1rem;
+  //border: 1px red solid;
 }
 
 .rundown__header {
@@ -7,6 +8,7 @@
 }
 
 .rundown__step-container {
+  border: 1px red solid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -33,7 +35,6 @@
 
 #step01 {
   background-image: url('../assets/images/01.svg');
-  //background-color: #9d9d9d;
   background-repeat: no-repeat;
   background-position: center;
   background-cover: cover;
@@ -41,7 +42,6 @@
 
 #step02 {
   background-image: url('../assets/images/02.svg');
-  //background-color: #9d9d9d;
   background-repeat: no-repeat;
   background-position: center;
   background-cover: cover;
@@ -49,8 +49,14 @@
 
 #step03 {
   background-image: url('../assets/images/03.svg');
-  //background-color: #9d9d9d;
   background-repeat: no-repeat;
   background-position: center;
   background-cover: cover;
+}
+
+@media only screen and (max-width: 600px) {
+  .rundown__step-container {
+    border: 1px orange solid;
+    grid-template-columns: 1fr;
+  }
 }
