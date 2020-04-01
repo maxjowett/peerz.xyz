@@ -1,14 +1,12 @@
 .rundown {
-  //margin-top: 1rem;
-  //border: 1px red solid;
+  //Do stuff
 }
 
 .rundown__header {
-  //font-size: 1rem;
+  //Do stuff
 }
 
 .rundown__step-container {
-  border: 1px red solid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -37,26 +35,61 @@
   background-image: url('../assets/images/01.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-cover: cover;
+  background-size: contain;
 }
 
 #step02 {
   background-image: url('../assets/images/02.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-cover: cover;
+  background-size: contain;
 }
 
 #step03 {
   background-image: url('../assets/images/03.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-cover: cover;
+  background-size: contain;
 }
 
 @media only screen and (max-width: 600px) {
   .rundown__step-container {
-    border: 1px orange solid;
     grid-template-columns: 1fr;
+  }
+
+  .rundown__step {
+    padding: 24px;
+    margin-bottom: 4rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .rundown__step-container {
+    grid-template-columns: 1fr;
+  }
+
+  .rundown__step {
+    padding: 16px;
+    margin-bottom: 4rem;
+  }
+}
+
+@media only screen and (min-width: 788px) {
+  .rundown__step-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .rundown__step-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .rundown__step_header {
+    font-size: 1.8rem;
+  }
+
+  .rundown__step_details {
+    font-size: 0.9rem;
   }
 }
