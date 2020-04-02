@@ -2,16 +2,18 @@
 
 .faq {
   color: $primary-grey;
+  margin-bottom: 8rem;
 }
 
 .faq__box {
   background-image: url('../assets/images/free001.svg');
   background-color: #e8e8e8;
   padding: 4rem;
+  margin-bottom: 8rem;
 }
 
 .faq__corner-img {
-  margin-top: -24px;
+  //padding-top: -948px;
 }
 
 .faq__question {

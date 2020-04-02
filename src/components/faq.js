@@ -2,7 +2,8 @@ import React from 'react';
 
 import '../styles/faq.scss';
 
-import Arrow from '../assets/images/corner-down-right (1).svg';
+import Arrow from '../assets/images/arrow-down-right.svg';
+
 const FAQ = () => {
   return (
     <div className="faq">

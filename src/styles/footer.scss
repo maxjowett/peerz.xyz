@@ -1,0 +1,54 @@
+@import 'colors';
+
+.footer {
+  padding-bottom: 2rem;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 128px 1fr 2fr;
+  grid-gap: 32px;
+}
+
+.footer__logo {
+  align-self: center;
+}
+
+.footer__header {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(#2c94f5, 0.2);
+}
+
+.footer__text {
+  font-family: 'Maison Neue Mono';
+}
+
+.footer__email {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #2c94f5;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer__container {
+    grid-template-columns: 128px 1fr;
+  }
+
+  .footer__contact {
+    justify-self: center;
+  }
+
+  .footer__colophon {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .footer__contact {
+    justify-self: start;
+  }
+}
