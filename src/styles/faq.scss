@@ -2,13 +2,11 @@
 
 .faq {
   color: $primary-grey;
-  font-size: 1.2rem;
 }
 
 .faq__box {
-  height: 540px;
   background-image: url('../assets/images/free001.svg');
-  background-color: #effce6;
+  background-color: #e8e8e8;
   padding: 4rem;
 }
 
@@ -17,4 +15,9 @@
 }
 
 .faq__question {
+  font-size: 1.6rem;
+}
+
+.faq__answer {
+  font-family: 'Maison Neue Mono', monospace;
 }
