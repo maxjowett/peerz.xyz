@@ -10,7 +10,7 @@ const Rundown = () => {
   return (
     <div className="rundown">
       <div className="g-row">
-        <h1 className="rundown__header">How it works</h1>
+        <h1 className="rundown__header">The rundown</h1>
         <div className="rundown__step-container">
           <div className="rundown__step" id="step01">
             <img className="rundown__step_img" src={Link} />

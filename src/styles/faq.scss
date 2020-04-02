@@ -1,0 +1,20 @@
+@import 'colors';
+
+.faq {
+  color: $primary-grey;
+  font-size: 1.2rem;
+}
+
+.faq__box {
+  height: 540px;
+  background-image: url('../assets/images/free001.svg');
+  background-color: #effce6;
+  padding: 4rem;
+}
+
+.faq__corner-img {
+  margin-top: -24px;
+}
+
+.faq__question {
+}
