@@ -30,10 +30,10 @@ const Rundown = () => {
           </div>
           <div className="rundown__step" id="step03">
             <img className="rundown__step_img" src={Video} />
-            <h1 className="rundown__step_header">Create a session</h1>
+            <h1 className="rundown__step_header">Chat away</h1>
             <p className="rundown__step_details">
-              Once you send your link to a friend, once they join, WebRTC will
-              take care of the rest!
+              Once your friend joins, you're now connected through WebRTC,
+              browser to browser, no server involved.
             </p>
           </div>
         </div>
