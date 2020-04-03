@@ -28,7 +28,7 @@ const Footer = () => {
             <h1 className="footer__header">Colophon</h1>
             <p className="footer__text">
               Peerz was built with React, WebRTC, Node.js, socket.io, hosted on
-              Netlify and running on a Digital Ocean droplet.
+              Netlify, and running on a Digital Ocean droplet.
             </p>
           </div>
         </div>

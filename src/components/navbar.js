@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import '../styles/navbar.scss';
 
@@ -13,14 +14,17 @@ const Navbar = () => {
         </div>
         <div className="navbar__actions">
           <a className="navbar__action" href="#">
-            About
+            How it works
           </a>
           <a className="navbar__action" href="#">
-            Contact
+            About
           </a>
           <a className="navbar__action" href="#">
             FAQ
           </a>
+          <button className="g-button-primary">
+            <Link to="/init">Create session</Link>
+          </button>
         </div>
       </div>
     </div>

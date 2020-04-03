@@ -9,6 +9,8 @@ import Rundown from '../components/rundown.js';
 import FAQ from '../components/faq.js';
 import Footer from '../components/footer.js';
 
+//Look into smooth scroll @ https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior
+
 const Index = () => {
   return (
     <>
