@@ -12,6 +12,9 @@ const Hero = () => {
         <div className="hero__subheader">
           <p>Peer to peer, real time communication, the way it should be.</p>
         </div>
+        <div className="hero__create-session">
+          <button className="g-button-primary">Create session</button>
+        </div>
       </div>
     </div>
   );
