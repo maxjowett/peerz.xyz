@@ -21,7 +21,7 @@ const Navbar = () => {
           <a className="navbar__action" href="#">
             FAQ
           </a>
-          <button className="g-button-primary">
+          <button className="navbar__create-session g-button-primary">
             <Link to="/init">Create session</Link>
           </button>
         </div>

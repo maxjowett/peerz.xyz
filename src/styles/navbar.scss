@@ -23,3 +23,9 @@
 .navbar__action:not(:last-child) {
   padding-right: 24px;
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar__create-session {
+    display: none;
+  }
+}
