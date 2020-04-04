@@ -16,9 +16,7 @@ const Index = () => {
   const remoteVideoRef = useRef(null);
 
   const createSession = () => {
-    console.log(createUrl());
     setSessionId(hri.random());
-    console.log('Creating session: ', sessionId);
   };
 
   const getMedia = () => {
@@ -58,13 +56,6 @@ const Index = () => {
   };
 
   useEffect(() => {
-    const success = location => {
-      console.log(location);
-    };
-    if (navigator.geolocation) {
-      console.log('Got some location');
-      navigator.geolocation.getCurrentPosition(success);
-    }
     createSession();
     getMedia();
   }, []);
