@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="g-row">
         <div className="footer__container">
           <div className="footer__logo">
-            <img src={Logo} height="96" />
+            <img src={Logo} height="96" alt="logo" />
           </div>
           <div className="footer__contact">
             <h1 className="footer__header">Get in touch</h1>

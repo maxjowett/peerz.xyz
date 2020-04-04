@@ -1,13 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 import Draggable from 'react-draggable';
 
-const socket = io('https://www.api.peerz.xyz');
+import { createUrl } from '../utils/base-url.js';
+
+//Gross ES5 import
+const hri = require('human-readable-ids').hri;
+
+const socket = io(createUrl());
 
 const Index = () => {
+  const [sessionId, setSessionId] = useState(null);
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
+
+  const createSession = () => {
+    console.log(createUrl());
+    setSessionId(hri.random());
+    console.log('Creating session: ', sessionId);
+  };
 
   const getMedia = () => {
     navigator.mediaDevices
@@ -45,24 +57,22 @@ const Index = () => {
     });
   };
 
-  const handleStart = e => {
-    console.log(e);
-  };
-
-  const handleDrag = e => {
-    console.log(e);
-  };
-
-  const handleStop = e => {
-    console.log(e);
-  };
   useEffect(() => {
+    const success = location => {
+      console.log(location);
+    };
+    if (navigator.geolocation) {
+      console.log('Got some location');
+      navigator.geolocation.getCurrentPosition(success);
+    }
+    createSession();
     getMedia();
   }, []);
 
   return (
     <div>
       <h1>WebRTC</h1>
+      <h2>Session id: {sessionId}</h2>
       <Draggable position={null} bounds="body">
         <video ref={localVideoRef} height="180" muted autoPlay />
       </Draggable>

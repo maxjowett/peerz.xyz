@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
-const socket = io('https://www.api.peerz.xyz');
+import { createUrl } from '../utils/base-url.js';
+
+const socket = io(createUrl());
 
 const Connect = () => {
   const localVideoRef = useRef(null);

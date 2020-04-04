@@ -13,7 +13,7 @@ const Rundown = () => {
         <h1 className="rundown__header">The rundown</h1>
         <div className="rundown__step-container">
           <div className="rundown__step" id="step01">
-            <img className="rundown__step_img" src={Link} />
+            <img className="rundown__step_img" src={Link} alt="" />
             <h1 className="rundown__step_header">Create a session</h1>
             <p className="rundown__step_details">
               Creating a session will generate a unique session ID you can send
@@ -21,7 +21,7 @@ const Rundown = () => {
             </p>
           </div>
           <div className="rundown__step" id="step02">
-            <img className="rundown__step_img" src={Unlock} />
+            <img className="rundown__step_img" src={Unlock} alt="" />
             <h1 className="rundown__step_header">Grant permissions</h1>
             <p className="rundown__step_details">
               In order to use WebRTC, your browser will need your permission to
@@ -29,7 +29,7 @@ const Rundown = () => {
             </p>
           </div>
           <div className="rundown__step" id="step03">
-            <img className="rundown__step_img" src={Video} />
+            <img className="rundown__step_img" src={Video} alt="" />
             <h1 className="rundown__step_header">Chat away</h1>
             <p className="rundown__step_details">
               Once your friend joins, you're now connected through WebRTC,

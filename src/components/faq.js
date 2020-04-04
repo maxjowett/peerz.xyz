@@ -9,7 +9,7 @@ const FAQ = () => {
     <div className="faq">
       <div className="g-row">
         <div className="faq__box">
-          <img className="faq__corner-img" src={Arrow} />
+          <img className="faq__corner-img" src={Arrow} alt="arrow" />
           <h2 className="faq__question">What is this?</h2>
           <p className="faq__answer">
             In lamen's terms, WebRTC allows you to connect with others browser
