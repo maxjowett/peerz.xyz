@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 
 import '../styles/navbar.scss';
 import Logo from '../assets/images/logo.svg';
 
 const Navbar = () => {
+  const onClick = () => {
+    navigate('/test-route/');
+  };
+
   return (
     <div className="g-row">
       <div className="navbar">
@@ -21,8 +25,10 @@ const Navbar = () => {
           <a className="navbar__action" href="#">
             FAQ
           </a>
-          <button className="navbar__create-session g-button-primary">
-            <Link to="/init">Create session</Link>
+          <button
+            className="navbar__create-session g-button-primary"
+            onClick={onClick}>
+            //<Link to="/init">Create session</Link>
           </button>
         </div>
       </div>

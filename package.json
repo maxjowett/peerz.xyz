@@ -19,6 +19,7 @@
   "homepage": "https://github.com/maxjowett/peerz.xyz#readme",
   "dependencies": {
     "gatsby": "^2.20.8",
+    "gatsby-plugin-create-client-paths": "^2.2.1",
     "gatsby-plugin-sass": "^2.2.1",
     "human-readable-ids": "^1.0.4",
     "node-sass": "^4.13.1",
