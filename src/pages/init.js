@@ -60,6 +60,10 @@ const Index = () => {
     getMedia();
   }, []);
 
+  useEffect(() => {
+    socket.emit('create-room', { sessionId });
+  }, [sessionId]);
+
   return (
     <div>
       <h1>WebRTC</h1>
