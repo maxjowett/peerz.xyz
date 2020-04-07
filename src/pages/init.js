@@ -61,7 +61,10 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    socket.emit('create-room', { sessionId });
+    //Once session id is created, send the name of the room over the socket
+    if (sessionId) {
+      socket.emit('create-room', { sessionId });
+    }
   }, [sessionId]);
 
   return (

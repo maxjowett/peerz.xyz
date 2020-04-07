@@ -3,7 +3,7 @@ module.exports = {
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-create-client-paths',
-      options: { prefixes: [`/init/*`] }
+      options: { prefixes: [`/connect/*`] }
     }
   ]
 };

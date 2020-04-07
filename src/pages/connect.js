@@ -48,6 +48,10 @@ const Connect = () => {
   };
 
   useEffect(() => {
+    // Extract session id from URL
+    let url = window.location.href;
+    let sessionId = url.split('/').pop();
+    socket.emit('join-room', { sessionId });
     getMedia();
   }, []);
 
