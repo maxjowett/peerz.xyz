@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { navigate } from 'gatsby';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
@@ -32,6 +33,10 @@ const Connect = () => {
       }
     });
 
+    socket.on('join-stream', data => {
+      console.log(data);
+    });
+
     peer.on('signal', signal => {
       socket.emit('signal', signal);
     });
@@ -52,6 +57,13 @@ const Connect = () => {
     let url = window.location.href;
     let sessionId = url.split('/').pop();
     socket.emit('join-room', { sessionId });
+
+    socket.on('join-room', data => {
+      const { success, error } = data;
+      if (!success) {
+        navigate('/error');
+      }
+    });
     getMedia();
   }, []);
 
