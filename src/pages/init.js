@@ -12,8 +12,8 @@ const socket = io(createUrl());
 
 const Index = () => {
   const [sessionId, setSessionId] = useState(null);
-  const localVideoRef = useRef(null);
-  const remoteVideoRef = useRef(null);
+  let localVideoRef = useRef(null);
+  let remoteVideoRef = useRef(null);
 
   const createSession = () => {
     setSessionId(hri.random());
@@ -28,8 +28,8 @@ const Index = () => {
       });
   };
 
-  const handleStream = stream => {
-    const peer = new Peer({
+  const createPeer = stream => {
+    return new Peer({
       stream,
       trickle: false,
       config: {
@@ -39,6 +39,10 @@ const Index = () => {
         ]
       }
     });
+  };
+
+  const handleStream = stream => {
+    let peer = createPeer(stream);
 
     peer.on('signal', signal => {
       socket.emit('signal', signal);
@@ -52,6 +56,16 @@ const Index = () => {
     peer.on('stream', stream => {
       console.log('I got a stream!');
       remoteVideoRef.current.srcObject = stream;
+    });
+
+    peer.on('error', err => {
+      console.log('Peer connection was closed');
+      if (err) {
+        peer.destroy();
+        // Create new peer instance
+        peer = createPeer(stream);
+        handleStream(stream);
+      }
     });
   };
 
