@@ -12,8 +12,10 @@ const socket = io(createUrl());
 
 const Index = () => {
   const [sessionId, setSessionId] = useState(null);
+  const [peerLocation, setPeerLocation] = useState(null);
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
+  let localCanvasRef = useRef(null);
 
   const createSession = () => {
     setSessionId(hri.random());
@@ -83,13 +85,19 @@ const Index = () => {
 
   return (
     <div>
-      <h1>WebRTC</h1>
       <h2>Session id: {sessionId}</h2>
       <Draggable position={null} bounds="body">
-        <video ref={localVideoRef} height="180" muted autoPlay />
+        <video
+          id="localVideo"
+          ref={localVideoRef}
+          height="180"
+          muted
+          controls
+          autoPlay
+        />
       </Draggable>
       <Draggable position={null} bounds="body">
-        <video ref={remoteVideoRef} height="180" autoPlay />
+        <video ref={remoteVideoRef} autoPlay />
       </Draggable>
     </div>
   );

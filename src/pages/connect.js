@@ -53,6 +53,17 @@ const Connect = () => {
   };
 
   useEffect(() => {
+    const locationSuccess = location => {
+      console.log(location);
+    };
+
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(locationSuccess);
+      }
+    };
+
+    getLocation();
     // Extract session id from URL
     let url = window.location.href;
     let sessionId = url.split('/').pop();
@@ -69,7 +80,6 @@ const Connect = () => {
 
   return (
     <div>
-      <h1>WebRTC</h1>
       <video ref={localVideoRef} height="180" muted autoPlay />
       <video ref={remoteVideoRef} height="180" autoPlay />
     </div>
