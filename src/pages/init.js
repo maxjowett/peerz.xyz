@@ -16,13 +16,9 @@ const hri = require('human-readable-ids').hri;
 
 const socket = io(createUrl());
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-`;
-
 const Index = () => {
   const [sessionId, setSessionId] = useState(null);
+  const [peerConnected, togglePeerConnected] = useState(false);
   const [peerLocation, setPeerLocation] = useState(null);
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
@@ -69,6 +65,7 @@ const Index = () => {
     peer.on('stream', stream => {
       console.log('I got a stream!');
       remoteVideoRef.current.srcObject = stream;
+      togglePeerConnected(true);
     });
 
     peer.on('error', err => {
@@ -94,39 +91,23 @@ const Index = () => {
     }
   }, [sessionId]);
 
-  //<span>
-  //Waiting for peer connections
-  //{sessionId && (
-  //<ScaleLoader
-  //css={override}
-  //height={12}
-  //width={1}
-  //radius={2}
-  //margin={1}
-  //color={'#B4D455'}
-  ///>
-  //)}
-  //</span>
   return (
     <div className="host">
       <div />
       <div className="host__cams">
         <Draggable position={null} bounds="body">
-          <video
-            id="localVideo"
-            ref={localVideoRef}
-            height="180"
-            muted
-            controls
-            autoPlay
-          />
+          <video ref={localVideoRef} height="180" muted autoPlay />
         </Draggable>
         <Draggable position={null} bounds="body">
-          <video ref={remoteVideoRef} autoPlay />
+          <video ref={remoteVideoRef} height={180} autoPlay />
         </Draggable>
       </div>
       <div className="host__panel">
-        <HostPanel sessionId={sessionId} />
+        <HostPanel
+          sessionId={sessionId}
+          peerConnected={peerConnected}
+          peerLocation={peerLocation}
+        />
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const Navbar = () => {
           <button
             className="navbar__create-session g-button-primary"
             onClick={onClick}>
-            //<Link to="/init">Create session</Link>
+            <Link to="/init">Create session</Link>
           </button>
         </div>
       </div>
