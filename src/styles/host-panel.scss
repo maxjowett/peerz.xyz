@@ -1,0 +1,14 @@
+.host-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 8px;
+  font-family: 'AktivGrotesk-Light';
+  font-size: 0.8rem;
+}
+
+.host-panel__left {
+}
+
+.host-panel__right {
+  justify-self: end;
+}
