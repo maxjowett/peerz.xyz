@@ -22,7 +22,6 @@ const Index = () => {
   const [peerLocation, setPeerLocation] = useState(null);
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
-  let localCanvasRef = useRef(null);
 
   const createSession = () => {
     setSessionId(hri.random());
@@ -65,6 +64,7 @@ const Index = () => {
     peer.on('stream', stream => {
       console.log('I got a stream!');
       remoteVideoRef.current.srcObject = stream;
+      //Hand down this state to display whether a peer is currently connected
       togglePeerConnected(true);
     });
 
@@ -72,6 +72,7 @@ const Index = () => {
       console.log('Peer connection was closed');
       if (err) {
         peer.destroy();
+        togglePeerConnected(false);
         // Create new peer instance
         peer = createPeer(stream);
         handleStream(stream);
@@ -96,7 +97,7 @@ const Index = () => {
       <div />
       <div className="host__cams">
         <Draggable position={null} bounds="body">
-          <video ref={localVideoRef} height="180" muted autoPlay />
+          <video ref={localVideoRef} height={180} muted autoPlay />
         </Draggable>
         <Draggable position={null} bounds="body">
           <video ref={remoteVideoRef} height={180} autoPlay />
