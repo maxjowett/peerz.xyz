@@ -5,7 +5,15 @@ import RingLoader from 'react-spinners/RingLoader';
 
 import '../styles/host-panel.scss';
 
+//TODO: Figure out how to better handle this grid alignment issue
 const override = css`
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: middle;
+  padding-right: 8px;
+`;
+
+const override2 = css`
   display: inline-block;
   margin: 0 auto;
   vertical-align: inherit;
@@ -33,7 +41,7 @@ const HostPanel = props => {
           </>
         ) : (
           <>
-            <RingLoader css={override} size={12} color={'orange'} />1 active
+            <RingLoader css={override2} size={12} color={'orange'} />1 active
             peer connection
           </>
         )}
