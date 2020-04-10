@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import RingLoader from 'react-spinners/RingLoader';
-import { FiPlus, FiMinus, FiVolumeX } from 'react-icons/Fi';
+import { FiPlus, FiMinus, FiVolumeX, FiClipboard } from 'react-icons/Fi';
 
 import '../styles/host-panel.scss';
 
@@ -32,49 +32,66 @@ const HostPanel = props => {
     setPeerVolume
   } = props;
 
+  const renderMinus = () => {
+    return peerVolume > 0 ? (
+      <FiMinus
+        size={'16px'}
+        color={'#999'}
+        style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+        onClick={() =>
+          setPeerVolume(formatVolume(parseFloat(peerVolume) - 0.2))
+        }
+      />
+    ) : (
+      <FiMinus
+        size={'16px'}
+        color={'#555'}
+        style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+      />
+    );
+  };
+
+  const renderPlus = () => {
+    return peerVolume < 5 ? (
+      <FiPlus
+        size={'16px'}
+        color={'#999'}
+        style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+        onClick={() =>
+          setPeerVolume(formatVolume(parseFloat(peerVolume) + 0.2))
+        }
+      />
+    ) : (
+      <FiPlus
+        size={'16px'}
+        color={'#555'}
+        style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+      />
+    );
+  };
+
+  const handleClipboardClick = () => {
+    console.log('Creating link');
+    console.log(`localhost:8000/connect/${sessionId}`);
+  };
+
+  //TODO: Remove inline css from icons
   return (
     <div className="host-panel">
-      <div className="host-panel__left">Session ID: {sessionId}</div>
+      <div className="host-panel__left">
+        Session ID: {sessionId}{' '}
+        <FiClipboard
+          onClick={() => {
+            handleClipboardClick();
+          }}
+        />
+      </div>
       <div className="host-panel__controls">
-        <div className="host-panel__controls-volume">
-          {peerVolume > 0 ? (
-            <FiMinus
-              size={'16px'}
-              color={'#999'}
-              style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-              onClick={() =>
-                setPeerVolume(formatVolume(parseFloat(peerVolume) - 0.5))
-              }
-            />
-          ) : (
-            <FiMinus
-              size={'16px'}
-              color={'#555'}
-              style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-            />
-          )}
-        </div>
+        <div className>{renderMinus()}</div>
         <div className="host-panel__controls-mid">
           {parseFloat(peerVolume).toFixed(1)}
         </div>
-        <div>
-          {peerVolume < 5 ? (
-            <FiPlus
-              size={'16px'}
-              color={'#999'}
-              style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-              onClick={() =>
-                setPeerVolume(formatVolume(parseFloat(peerVolume) + 0.5))
-              }
-            />
-          ) : (
-            <FiPlus
-              size={'16px'}
-              color={'#555'}
-              style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-            />
-          )}
-        </div>
+        <div>{renderPlus()}</div>
       </div>
       <div className="host-panel__right">
         {!peerConnected ? (

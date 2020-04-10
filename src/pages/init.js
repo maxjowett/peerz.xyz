@@ -20,7 +20,7 @@ const Index = () => {
   const [sessionId, setSessionId] = useState(null);
   const [peerConnected, togglePeerConnected] = useState(false);
   const [peerLocation, setPeerLocation] = useState(null);
-  const [peerVolume, setPeerVolume] = useState(4);
+  const [peerVolume, setPeerVolume] = useState(0.7);
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
 
@@ -67,6 +67,8 @@ const Index = () => {
       remoteVideoRef.current.srcObject = stream;
       //Hand down this state to display whether a peer is currently connected
       togglePeerConnected(true);
+      const volume = document.getElementById('remoteVideo');
+      console.log(volume);
     });
 
     peer.on('error', err => {
@@ -79,6 +81,11 @@ const Index = () => {
         handleStream(stream);
       }
     });
+  };
+
+  const scaleVolume = v => {
+    //On a scale of 0 - 5, render a decimal appropriatley
+    return (v * 2) / 10;
   };
 
   useEffect(() => {
@@ -101,7 +108,14 @@ const Index = () => {
           <video ref={localVideoRef} height={120} muted autoPlay />
         </Draggable>
         <Draggable position={null} bounds="body">
-          <video ref={remoteVideoRef} height={120} autoPlay />
+          <video
+            ref={remoteVideoRef}
+            id="remoteVideo"
+            volume={scaleVolume(peerVolume)}
+            height={120}
+            controls
+            autoPlay
+          />
         </Draggable>
       </div>
       <div className="host__panel">
