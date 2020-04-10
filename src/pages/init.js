@@ -20,6 +20,7 @@ const Index = () => {
   const [sessionId, setSessionId] = useState(null);
   const [peerConnected, togglePeerConnected] = useState(false);
   const [peerLocation, setPeerLocation] = useState(null);
+  const [peerVolume, setPeerVolume] = useState(4);
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
 
@@ -97,10 +98,10 @@ const Index = () => {
       <div />
       <div className="host__cams">
         <Draggable position={null} bounds="body">
-          <video ref={localVideoRef} height={180} muted autoPlay />
+          <video ref={localVideoRef} height={120} muted autoPlay />
         </Draggable>
         <Draggable position={null} bounds="body">
-          <video ref={remoteVideoRef} height={180} autoPlay />
+          <video ref={remoteVideoRef} height={120} autoPlay />
         </Draggable>
       </div>
       <div className="host__panel">
@@ -108,6 +109,8 @@ const Index = () => {
           sessionId={sessionId}
           peerConnected={peerConnected}
           peerLocation={peerLocation}
+          peerVolume={peerVolume}
+          setPeerVolume={setPeerVolume}
         />
       </div>
     </div>

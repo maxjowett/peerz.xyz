@@ -1,12 +1,25 @@
 .host-panel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   padding-bottom: 8px;
   font-family: 'AktivGrotesk-Light';
   font-size: 0.8rem;
 }
 
 .host-panel__left {
+}
+
+.host-panel__controls {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  vertical-align: middle;
+  grid-gap: 8px;
+  align-self: center;
+  justify-self: center;
+}
+
+.host-panel__controls-mid {
+  align-self: flex-end;
 }
 
 .host-panel__right {
