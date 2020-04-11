@@ -11,7 +11,6 @@ import HostPanel from '../components/host-panel.js';
 
 import '../styles/host.scss';
 
-//Gross ES5 import
 const hri = require('human-readable-ids').hri;
 
 const socket = io(createUrl());
@@ -84,7 +83,6 @@ const Index = () => {
   };
 
   const scaleVolume = v => {
-    //On a scale of 0 - 5, render a decimal appropriatley
     return (v * 2) / 10;
   };
 
