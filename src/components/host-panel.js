@@ -101,12 +101,17 @@ const HostPanel = props => {
   return (
     <div className="host-panel">
       <div className="host-panel__left">
-        Session ID: {sessionId} <>{createInviteLink()}</>
-        <FiClipboard
-          onClick={() => {
-            handleClipboardClick();
-          }}
-        />
+        <span className="host-panel__invite">
+          {createInviteLink()}{' '}
+          <FiClipboard
+            css={override}
+            style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+            onClick={() => {
+              //TODO: Automatically copy session invite link to user's clipboard
+              handleClipboardClick();
+            }}
+          />
+        </span>
       </div>
       <div className="host-panel__controls">
         <div className>{renderMinus()}</div>
