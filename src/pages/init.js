@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import Draggable from 'react-draggable';
 
-import { createUrl } from '../utils/base-url.js';
+import { baseUrl } from '../utils/base-url.js';
 
 import HostPanel from '../components/host-panel.js';
 
@@ -13,13 +13,14 @@ import '../styles/host.scss';
 
 const hri = require('human-readable-ids').hri;
 
-const socket = io(createUrl());
+const socket = io(baseUrl());
 
 const Index = () => {
   const [sessionId, setSessionId] = useState(null);
   const [peerConnected, togglePeerConnected] = useState(false);
   const [peerLocation, setPeerLocation] = useState(null);
   const [peerVolume, setPeerVolume] = useState(0.7);
+
   let localVideoRef = useRef(null);
   let remoteVideoRef = useRef(null);
 
@@ -80,10 +81,6 @@ const Index = () => {
         handleStream(stream);
       }
     });
-  };
-
-  const scaleVolume = v => {
-    return (v * 2) / 10;
   };
 
   useEffect(() => {

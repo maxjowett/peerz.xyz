@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import RingLoader from 'react-spinners/RingLoader';
+import { baseUrl } from '../utils/base-url.js';
 import { FiPlus, FiMinus, FiVolumeX, FiClipboard } from 'react-icons/Fi';
 
 import '../styles/host-panel.scss';
@@ -64,6 +65,14 @@ const HostPanel = props => {
     );
   };
 
+  const createInviteLink = () => {
+    let base =
+      process.env.NODE_ENV === 'production'
+        ? 'https://peerz.xyz'
+        : 'localhost:8000';
+    return `${base}/connect/${sessionId}`;
+  };
+
   const handleClipboardClick = () => {
     console.log('Creating link');
     console.log(`localhost:8000/connect/${sessionId}`);
@@ -92,7 +101,7 @@ const HostPanel = props => {
   return (
     <div className="host-panel">
       <div className="host-panel__left">
-        Session ID: {sessionId}{' '}
+        Session ID: {sessionId} <>{createInviteLink()}</>
         <FiClipboard
           onClick={() => {
             handleClipboardClick();

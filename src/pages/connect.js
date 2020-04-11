@@ -3,9 +3,9 @@ import { navigate } from 'gatsby';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
-import { createUrl } from '../utils/base-url.js';
+import { baseUrl } from '../utils/base-url.js';
 
-const socket = io(createUrl());
+const socket = io(baseUrl());
 
 const Connect = () => {
   const localVideoRef = useRef(null);
