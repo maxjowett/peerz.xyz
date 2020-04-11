@@ -6,8 +6,6 @@ import { FiPlus, FiMinus, FiVolumeX, FiClipboard } from 'react-icons/Fi';
 
 import '../styles/host-panel.scss';
 
-import { formatVolume } from '../utils/volume.js';
-
 //TODO: Figure out how to better handle this grid alignment issue
 const override = css`
   display: inline-block;
@@ -38,9 +36,7 @@ const HostPanel = props => {
         size={'16px'}
         color={'#999'}
         style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-        onClick={() =>
-          setPeerVolume(formatVolume(parseFloat(peerVolume) - 0.2))
-        }
+        onClick={decreaseVolume}
       />
     ) : (
       <FiMinus
@@ -52,14 +48,12 @@ const HostPanel = props => {
   };
 
   const renderPlus = () => {
-    return peerVolume < 5 ? (
+    return peerVolume < 1 ? (
       <FiPlus
         size={'16px'}
         color={'#999'}
         style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-        onClick={() =>
-          setPeerVolume(formatVolume(parseFloat(peerVolume) + 0.2))
-        }
+        onClick={increaseVolume}
       />
     ) : (
       <FiPlus
@@ -73,6 +67,25 @@ const HostPanel = props => {
   const handleClipboardClick = () => {
     console.log('Creating link');
     console.log(`localhost:8000/connect/${sessionId}`);
+  };
+
+  const increaseVolume = () => {
+    if (peerVolume < 1) {
+      let adjusted = parseFloat(peerVolume) + parseFloat(0.1);
+      setPeerVolume(adjusted.toFixed(1));
+    }
+  };
+
+  const decreaseVolume = () => {
+    if (peerVolume > 0) {
+      let adjusted = parseFloat(peerVolume) - parseFloat(0.1);
+      setPeerVolume(adjusted.toFixed(1));
+    }
+  };
+
+  const scaleVolume = v => {
+    let vol = parseFloat(v * 5);
+    return vol.toFixed(1);
   };
 
   //TODO: Remove inline css from icons
@@ -89,7 +102,7 @@ const HostPanel = props => {
       <div className="host-panel__controls">
         <div className>{renderMinus()}</div>
         <div className="host-panel__controls-mid">
-          {parseFloat(peerVolume).toFixed(1)}
+          {scaleVolume(peerVolume)}
         </div>
         <div>{renderPlus()}</div>
       </div>

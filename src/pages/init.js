@@ -109,7 +109,7 @@ const Index = () => {
           <video
             ref={remoteVideoRef}
             id="remoteVideo"
-            volume={scaleVolume(peerVolume)}
+            volume={peerVolume}
             height={120}
             controls
             autoPlay
