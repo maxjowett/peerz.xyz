@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { css } from '@emotion/core';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import RingLoader from 'react-spinners/RingLoader';
-import { baseUrl } from '../utils/base-url.js';
 import { FiPlus, FiMinus, FiVolumeX, FiClipboard } from 'react-icons/Fi';
 
 import '../styles/host-panel.scss';
@@ -23,8 +23,11 @@ const override2 = css`
 `;
 
 const HostPanel = props => {
+  const [copySuccess, toggleCopySuccess] = useState(false);
+
   const {
     sessionId,
+    sessionInvite,
     peerConnected,
     peerLocation,
     peerVolume,
@@ -65,17 +68,23 @@ const HostPanel = props => {
     );
   };
 
-  const createInviteLink = () => {
-    let base =
-      process.env.NODE_ENV === 'production'
-        ? 'https://peerz.xyz'
-        : 'localhost:8000';
-    return `${base}/connect/${sessionId}`;
-  };
-
-  const handleClipboardClick = () => {
-    console.log('Creating link');
-    console.log(`localhost:8000/connect/${sessionId}`);
+  const renderInviteBlock = () => {
+    // When the user loads the page, the link is visible, once that link is clicked,
+    // temporarily toggle the contents of the block to display a success message
+    return copySuccess ? (
+      <>An invite link was copied to your clipboard!</>
+    ) : (
+      <CopyToClipboard text={sessionInvite}>
+        <span style={{ cursor: 'pointer' }}>
+          {sessionInvite}{' '}
+          <FiClipboard
+            css={override}
+            style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+            onClick={() => toggleCopySuccess(true)}
+          />
+        </span>
+      </CopyToClipboard>
+    );
   };
 
   const increaseVolume = () => {
@@ -97,21 +106,18 @@ const HostPanel = props => {
     return vol.toFixed(1);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('Waited 5 seconds');
+      toggleCopySuccess(false);
+    }, 5000);
+  }, [copySuccess]);
+
   //TODO: Remove inline css from icons
   return (
     <div className="host-panel">
       <div className="host-panel__left">
-        <span className="host-panel__invite">
-          {createInviteLink()}{' '}
-          <FiClipboard
-            css={override}
-            style={{ verticalAlign: 'middle', cursor: 'pointer' }}
-            onClick={() => {
-              //TODO: Automatically copy session invite link to user's clipboard
-              handleClipboardClick();
-            }}
-          />
-        </span>
+        <span className="host-panel__invite">{renderInviteBlock()}</span>
       </div>
       <div className="host-panel__controls">
         <div className>{renderMinus()}</div>

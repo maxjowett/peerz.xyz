@@ -17,6 +17,7 @@ const socket = io(baseUrl());
 
 const Index = () => {
   const [sessionId, setSessionId] = useState(null);
+  const [sessionInvite, setSessionInvite] = useState('');
   const [peerConnected, togglePeerConnected] = useState(false);
   const [peerLocation, setPeerLocation] = useState(null);
   const [peerVolume, setPeerVolume] = useState(0.7);
@@ -83,6 +84,14 @@ const Index = () => {
     });
   };
 
+  const createInviteLink = () => {
+    let base =
+      process.env.NODE_ENV === 'production'
+        ? 'https://peerz.xyz'
+        : 'localhost:8000';
+    return `${base}/connect/${sessionId}`;
+  };
+
   useEffect(() => {
     createSession();
     getMedia();
@@ -92,6 +101,8 @@ const Index = () => {
     //Once session id is created, send the name of the room over the socket
     if (sessionId) {
       socket.emit('create-room', { sessionId });
+      //Create session invite link with session id
+      setSessionInvite(createInviteLink());
     }
   }, [sessionId]);
 
@@ -116,6 +127,7 @@ const Index = () => {
       <div className="host__panel">
         <HostPanel
           sessionId={sessionId}
+          sessionInvite={sessionInvite}
           peerConnected={peerConnected}
           peerLocation={peerLocation}
           peerVolume={peerVolume}
