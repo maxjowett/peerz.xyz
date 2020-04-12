@@ -3,7 +3,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { css } from '@emotion/core';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import RingLoader from 'react-spinners/RingLoader';
-import { FiPlus, FiMinus, FiVolumeX, FiClipboard } from 'react-icons/Fi';
+import {
+  FiPlus,
+  FiMinus,
+  FiVolumeX,
+  FiClipboard,
+  FiCheck
+} from 'react-icons/Fi';
 
 import '../styles/host-panel.scss';
 
@@ -72,16 +78,23 @@ const HostPanel = props => {
     // When the user loads the page, the link is visible, once that link is clicked,
     // temporarily toggle the contents of the block to display a success message
     return copySuccess ? (
-      <>An invite link was copied to your clipboard!</>
+      <>
+        <FiCheck
+          css={override}
+          color={'80f52c'}
+          style={{ verticalAlign: 'middle' }}
+        />{' '}
+        An invite link was copied to your clipboard!
+      </>
     ) : (
       <CopyToClipboard text={sessionInvite}>
         <span style={{ cursor: 'pointer' }}>
-          {sessionInvite}{' '}
           <FiClipboard
             css={override}
             style={{ verticalAlign: 'middle', cursor: 'pointer' }}
             onClick={() => toggleCopySuccess(true)}
-          />
+          />{' '}
+          {sessionInvite}
         </span>
       </CopyToClipboard>
     );

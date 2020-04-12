@@ -65,11 +65,11 @@ const Index = () => {
 
     peer.on('stream', stream => {
       console.log('I got a stream!');
+      console.log(remoteVideoRef);
       remoteVideoRef.current.srcObject = stream;
+      debugger;
       //Hand down this state to display whether a peer is currently connected
       togglePeerConnected(true);
-      const volume = document.getElementById('remoteVideo');
-      console.log(volume);
     });
 
     peer.on('error', err => {
@@ -92,6 +92,11 @@ const Index = () => {
     return `${base}/connect/${sessionId}`;
   };
 
+  const calculateHeight = () => {
+    //Set remote video element to have a height of 0 if no peer is connected
+    return peerConnected ? '180' : '0';
+  };
+
   useEffect(() => {
     createSession();
     getMedia();
@@ -101,7 +106,6 @@ const Index = () => {
     //Once session id is created, send the name of the room over the socket
     if (sessionId) {
       socket.emit('create-room', { sessionId });
-      //Create session invite link with session id
       setSessionInvite(createInviteLink());
     }
   }, [sessionId]);
@@ -118,8 +122,7 @@ const Index = () => {
             ref={remoteVideoRef}
             id="remoteVideo"
             volume={peerVolume}
-            height={120}
-            controls
+            height={calculateHeight()}
             autoPlay
           />
         </Draggable>
