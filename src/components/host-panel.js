@@ -88,7 +88,9 @@ const HostPanel = props => {
       </>
     ) : (
       <CopyToClipboard text={sessionInvite}>
-        <span style={{ cursor: 'pointer' }}>
+        <span
+          onClick={() => toggleCopySuccess(true)}
+          style={{ cursor: 'pointer' }}>
           <FiClipboard
             css={override}
             style={{ verticalAlign: 'middle', cursor: 'pointer' }}
@@ -121,9 +123,8 @@ const HostPanel = props => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log('Waited 5 seconds');
       toggleCopySuccess(false);
-    }, 5000);
+    }, 4000);
   }, [copySuccess]);
 
   //TODO: Remove inline css from icons

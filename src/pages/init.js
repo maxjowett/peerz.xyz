@@ -59,21 +59,15 @@ const Index = () => {
     });
 
     socket.on('signal', signal => {
-      console.log('I got a response from the joiner!');
       peer.signal(signal);
     });
 
     peer.on('stream', stream => {
-      console.log('I got a stream!');
-      console.log(remoteVideoRef);
       remoteVideoRef.current.srcObject = stream;
-      debugger;
-      //Hand down this state to display whether a peer is currently connected
       togglePeerConnected(true);
     });
 
     peer.on('error', err => {
-      console.log('Peer connection was closed');
       if (err) {
         peer.destroy();
         togglePeerConnected(false);
@@ -97,7 +91,34 @@ const Index = () => {
     return peerConnected ? '180' : '0';
   };
 
+  const getUserLocation = () => {
+    const reverseGeocode = (lat, lon) => {
+      fetch(
+        `https://us1.locationiq.com/v1/reverse.php?key=75232b95ff1a41&lat=${lat}&lon=${lon}&format=json`
+      )
+        .then(res => res.json())
+        .then(resp => {
+          //If the peer location is valid, set statw in order to display it to the other peer
+          const { city } = resp.address;
+          city ? setPeerLocation(city) : setPeerLocation();
+        });
+    };
+
+    const success = position => {
+      const { latitude, longitude } = position.coords;
+      console.log(latitude, longitude);
+      reverseGeocode(latitude, longitude);
+    };
+
+    const error = () => {
+      console.log('Something went wrong!');
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
+
   useEffect(() => {
+    getUserLocation();
     createSession();
     getMedia();
   }, []);
