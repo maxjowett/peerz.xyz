@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { navigate } from 'gatsby';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
 import { baseUrl } from '../utils/base-url.js';
+import { reverseGeocode } from '../utils/geolocation.js';
 
 const socket = io(baseUrl());
 
 const Connect = () => {
+  const [location, setLocation] = useState('');
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
 
@@ -19,6 +21,10 @@ const Connect = () => {
         handleStream(stream);
       });
   };
+
+  socket.on('location', location => {
+    console.log('I got peer location: ', location);
+  });
 
   const handleStream = stream => {
     const peer = new Peer({
@@ -37,6 +43,10 @@ const Connect = () => {
       console.log(data);
     });
 
+    socket.on('location', location => {
+      console.log('I got peer location: ', location);
+    });
+
     peer.on('signal', signal => {
       socket.emit('signal', signal);
     });
@@ -52,18 +62,30 @@ const Connect = () => {
     });
   };
 
-  useEffect(() => {
-    const locationSuccess = location => {
-      console.log(location);
-    };
-
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(locationSuccess);
+  const getUserLocation = () => {
+    const success = async position => {
+      const { latitude, longitude } = position.coords;
+      console.log('passing these coords', latitude, longitude);
+      let x = await reverseGeocode(latitude, longitude);
+      if (x) {
+        const { city } = x.address;
+        setLocation(city);
       }
     };
 
-    getLocation();
+    const error = () => {
+      console.log('Something went wrong!');
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
+
+  useEffect(() => {
+    socket.emit('location', { location });
+  }, [location]);
+
+  useEffect(() => {
+    getUserLocation();
     let url = window.location.href;
     let sessionId = url.split('/').pop();
     socket.emit('join-room', { sessionId });
@@ -79,8 +101,9 @@ const Connect = () => {
 
   return (
     <div>
-      <video ref={localVideoRef} height="180" muted autoPlay />
-      <video ref={remoteVideoRef} height="180" autoPlay />
+      {location && <h1>{location}</h1>}
+      <video ref={localVideoRef} height="90" muted autoPlay />
+      <video ref={remoteVideoRef} height="90" autoPlay />
     </div>
   );
 };

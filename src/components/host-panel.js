@@ -134,7 +134,7 @@ const HostPanel = props => {
         <span className="host-panel__invite">{renderInviteBlock()}</span>
       </div>
       <div className="host-panel__controls">
-        <div className>{renderMinus()}</div>
+        <div>{renderMinus()}</div>
         <div className="host-panel__controls-mid">
           {scaleVolume(peerVolume)}
         </div>

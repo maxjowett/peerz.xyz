@@ -6,6 +6,7 @@ import ScaleLoader from 'react-spinners/ScaleLoader';
 import Draggable from 'react-draggable';
 
 import { baseUrl } from '../utils/base-url.js';
+import { reverseGeocode } from '../utils/geolocation.js';
 
 import HostPanel from '../components/host-panel.js';
 
@@ -19,6 +20,7 @@ const Index = () => {
   const [sessionId, setSessionId] = useState(null);
   const [sessionInvite, setSessionInvite] = useState('');
   const [peerConnected, togglePeerConnected] = useState(false);
+  const [location, setLocation] = useState('');
   const [peerLocation, setPeerLocation] = useState(null);
   const [peerVolume, setPeerVolume] = useState(0.7);
 
@@ -54,12 +56,19 @@ const Index = () => {
   const handleStream = stream => {
     let peer = createPeer(stream);
 
+    //Along with signal, we should attach the user location
     peer.on('signal', signal => {
+      console.log('I have some signal');
       socket.emit('signal', signal);
     });
 
     socket.on('signal', signal => {
       peer.signal(signal);
+    });
+
+    socket.on('location', location => {
+      console.log('I got location');
+      console.log(location);
     });
 
     peer.on('stream', stream => {
@@ -88,26 +97,22 @@ const Index = () => {
 
   const calculateHeight = () => {
     //Set remote video element to have a height of 0 if no peer is connected
-    return peerConnected ? '180' : '0';
+    return peerConnected ? '120' : '0';
   };
 
-  const getUserLocation = () => {
-    const reverseGeocode = (lat, lon) => {
-      fetch(
-        `https://us1.locationiq.com/v1/reverse.php?key=75232b95ff1a41&lat=${lat}&lon=${lon}&format=json`
-      )
-        .then(res => res.json())
-        .then(resp => {
-          //If the peer location is valid, set statw in order to display it to the other peer
-          const { city } = resp.address;
-          city ? setPeerLocation(city) : setPeerLocation();
-        });
-    };
+  //Move all this code to utils, it should be shared between components
 
-    const success = position => {
+  const getUserLocation = () => {
+    const success = async position => {
       const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
-      reverseGeocode(latitude, longitude);
+      console.log('passing these coords', latitude, longitude);
+      let x = await reverseGeocode(latitude, longitude);
+      if (x) {
+        console.log(x);
+        const { city } = x.address;
+        console.log(city);
+        setLocation(city);
+      }
     };
 
     const error = () => {
@@ -122,6 +127,10 @@ const Index = () => {
     createSession();
     getMedia();
   }, []);
+
+  useEffect(() => {
+    socket.emit('location', { location });
+  }, [location]);
 
   useEffect(() => {
     //Once session id is created, send the name of the room over the socket
