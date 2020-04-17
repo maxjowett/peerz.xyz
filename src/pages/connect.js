@@ -9,7 +9,7 @@ import { reverseGeocode } from '../utils/geolocation.js';
 const socket = io(baseUrl());
 
 const Connect = () => {
-  const [location, setLocation] = useState('');
+  const [city, setCity] = useState('');
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
 
@@ -22,9 +22,9 @@ const Connect = () => {
       });
   };
 
-  socket.on('location', location => {
-    console.log('I got peer location: ', location);
-  });
+  //socket.on('location', location => {
+  //console.log('I got peer location: ', location);
+  //});
 
   const handleStream = stream => {
     const peer = new Peer({
@@ -68,8 +68,9 @@ const Connect = () => {
       console.log('passing these coords', latitude, longitude);
       let x = await reverseGeocode(latitude, longitude);
       if (x) {
-        const { city } = x.address;
-        setLocation(city);
+        const { city: c } = x.address;
+        setCity(c);
+        socket.emit('location', { c });
       }
     };
 
@@ -80,9 +81,9 @@ const Connect = () => {
     navigator.geolocation.getCurrentPosition(success, error);
   };
 
-  useEffect(() => {
-    socket.emit('location', { location });
-  }, [location]);
+  //useEffect(() => {
+  //socket.emit('location', { city });
+  //}, [city]);
 
   useEffect(() => {
     getUserLocation();
@@ -101,9 +102,8 @@ const Connect = () => {
 
   return (
     <div>
-      {location && <h1>{location}</h1>}
       <video ref={localVideoRef} height="90" muted autoPlay />
-      <video ref={remoteVideoRef} height="90" autoPlay />
+      <video ref={remoteVideoRef} height="90" muted autoPlay />
     </div>
   );
 };

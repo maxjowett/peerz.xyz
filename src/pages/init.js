@@ -20,7 +20,7 @@ const Index = () => {
   const [sessionId, setSessionId] = useState(null);
   const [sessionInvite, setSessionInvite] = useState('');
   const [peerConnected, togglePeerConnected] = useState(false);
-  const [location, setLocation] = useState('');
+  const [city, setCity] = useState('');
   const [peerLocation, setPeerLocation] = useState(null);
   const [peerVolume, setPeerVolume] = useState(0.7);
 
@@ -67,8 +67,7 @@ const Index = () => {
     });
 
     socket.on('location', location => {
-      console.log('I got location');
-      console.log(location);
+      console.log('I got location', location);
     });
 
     peer.on('stream', stream => {
@@ -109,9 +108,8 @@ const Index = () => {
       let x = await reverseGeocode(latitude, longitude);
       if (x) {
         console.log(x);
-        const { city } = x.address;
-        console.log(city);
-        setLocation(city);
+        const { city: c } = x.address;
+        setCity(c);
       }
     };
 
@@ -129,8 +127,10 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    socket.emit('location', { location });
-  }, [location]);
+    if (city && peerConnected) {
+      socket.emit('location', { city });
+    }
+  }, [city, peerConnected]);
 
   useEffect(() => {
     //Once session id is created, send the name of the room over the socket
@@ -144,6 +144,7 @@ const Index = () => {
     <div className="host">
       <div />
       <div className="host__cams">
+        <div>My location: {city}</div>
         <Draggable position={null} bounds="body">
           <video ref={localVideoRef} height={120} muted autoPlay />
         </Draggable>
@@ -153,6 +154,7 @@ const Index = () => {
             id="remoteVideo"
             volume={peerVolume}
             height={calculateHeight()}
+            muted
             autoPlay
           />
         </Draggable>
