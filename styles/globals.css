@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -12,4 +14,30 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.g__container {
+  margin: 0 auto;
+}
+
+.g__row {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.g__row--full-bleed {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.g__button--primary {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.g__button--secondary {
 }
