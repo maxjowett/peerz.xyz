@@ -10,13 +10,15 @@ const Info = () => {
         <div className={styles.info__right}>
           <div className={styles.info__right_container}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              WebRTC is a framework which enables the exchange of data, such as
+              audio and video, directly between internet browsers. Typically
+              this transfer of data would require a server, Instead, the WebRTC
+              protocol allow this exchange to occur without an intermediary
+              server.{' '}
+              <i>
+                In other words, no third party plug-ins, no accounts, completely
+                free real time communication.
+              </i>
             </p>
           </div>
         </div>
