@@ -49,18 +49,12 @@ h4 {
   width: 100%;
 }
 
-.g__row--full-bleed {
-  margin: 0 auto;
-  width: 100%;
-}
-
 .g__button--primary {
   color: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   max-width: 10rem;
   width: 100%;
-  padding: 16px 0 16px 0;
+  padding: 11px 0 13px 0;
   background-color: transparent;
   background-image: linear-gradient(
     to right,
@@ -68,25 +62,34 @@ h4 {
     rgb(255, 43, 97)
   );
   border: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  letter-spacing: 0.2px;
 }
 
 .g__button--primary:hover {
-  background-image: linear-gradient(to left, rgb(253, 95, 85), rgb(255, 85, 128));
+  background-image: linear-gradient(
+    to left,
+    rgb(253, 95, 85),
+    rgb(255, 85, 128)
+  );
 }
 
 .g__button--secondary {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   color: #222;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   max-width: 10rem;
   width: 100%;
-  padding: 16px 0 16px 0;
+  padding: 10px 0 12px 0;
   background-color: transparent;
   border: 1px solid #888;
   border-radius: 8px;
   cursor: pointer;
+  letter-spacing: 0.2px;
 }
 
 .g__button--secondary:hover {
