@@ -4,7 +4,7 @@ const Steps = () => {
   return (
     <div className={styles.steps}>
       <div className="g__row">
-        <h3>How it works</h3>
+        <h3 className="mt-0">How it works</h3>
       </div>
       <div className="g__row">
         <div className={styles.steps__list}>
