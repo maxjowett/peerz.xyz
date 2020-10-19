@@ -8,8 +8,14 @@ const Splash = () => {
           <h1 className={styles.splash__header}>P2P video chat, done right</h1>
         </div>
         <div className="g__row">
-          Video chat should be easy. No account, no server, just browser to browser, real time communication via WebRTC.
-          <button className="g__button--primary">Create chat</button>
+          Video chat should be easy. No account, no server, just browser to
+          browser, real time communication via WebRTC.
+        </div>
+        <div className={styles.splash__header}>
+          <div className="g__row">
+            <button className="g__button--primary">Create chat</button>
+            <button className="g__button--secondary ml-16">Join room</button>
+          </div>
         </div>
       </div>
     </div>
