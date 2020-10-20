@@ -8,7 +8,7 @@ const Steps = () => {
       </div>
       <div className="g__row">
         <div className={styles.steps__list}>
-          <div>
+          <div className={styles.steps__step}>
             <img src="/assets/icons8-webcam-64.png" height="64" />
             <h4>Create session</h4>
             <p>
@@ -16,7 +16,7 @@ const Steps = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-          <div>
+          <div className={styles.steps__step}>
             <img src="/assets/icons8-ethernet-on-64.png" height="64" />
             <h4>Realtime connection</h4>
             <p>
@@ -24,7 +24,7 @@ const Steps = () => {
               nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
-          <div>
+          <div className={styles.steps__step}>
             <img src="/assets/icons8-checkmark-64.png" height="64" />
             <h4>That was painless</h4>
             <p>

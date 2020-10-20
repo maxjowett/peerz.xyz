@@ -6,5 +6,16 @@
 .steps__list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 2rem;
+}
+
+.steps__step {
+  h4 {
+    margin: 0;
+  }
+
+  img {
+    margin-left: -8px;
+    margin-bottom: 8px;
+  }
 }
