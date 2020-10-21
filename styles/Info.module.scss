@@ -6,17 +6,21 @@
 }
 
 .info__left {
-  background-color: #fef4f7;
+  background-color: #faf5f6;
   height: 12rem;
   grid-column: 1 / 12;
   grid-row: 1;
 }
 
 .info__right {
-  background-color: #f1fce3;
+  background-color: #f5fff7;
   grid-column: 6 / -1;
   grid-row: 1;
   margin-top: 64px;
+
+  @media (max-width: 768px) {
+    margin-top: 128px;
+  }
 }
 
 .info__right_container {
