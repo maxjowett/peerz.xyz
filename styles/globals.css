@@ -1,10 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: 400;
+  src: url(/fonts/MaisonNeue-Book.woff);
+}
+
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: 500;
+  src: url(/fonts/MaisonNeue-Medium.woff);
+}
+
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: 600;
+  src: url(/fonts/MaisonNeue-Demi.woff);
+}
+
+@font-face {
+  font-family: 'Maison Neue';
+  font-weight: 700;
+  src: url(/fonts/MaisonNeue-Bold.woff);
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Public Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Maison Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -80,7 +102,6 @@ h4 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   color: #222;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   max-width: 10rem;
   width: 100%;
