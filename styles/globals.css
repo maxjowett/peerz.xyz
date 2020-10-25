@@ -1,33 +1,8 @@
-@font-face {
-  font-family: 'Maison Neue';
-  font-weight: 400;
-  src: url(/fonts/MaisonNeue-Book.woff);
-}
-
-@font-face {
-  font-family: 'Maison Neue';
-  font-weight: 500;
-  src: url(/fonts/MaisonNeue-Medium.woff);
-}
-
-@font-face {
-  font-family: 'Maison Neue';
-  font-weight: 600;
-  src: url(/fonts/MaisonNeue-Demi.woff);
-}
-
-@font-face {
-  font-family: 'Maison Neue';
-  font-weight: 700;
-  src: url(/fonts/MaisonNeue-Bold.woff);
-}
-
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: #f7f7f7;
-  font-family: 'Maison Neue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,79 +17,8 @@ a {
   text-decoration: none;
 }
 
-button:focus {
-  outline: none;
-}
-
-h1 {
-  font-size: 4.209rem;
-}
-
-h2 {
-  font-size: 3.157rem;
-}
-
-h3 {
-  font-size: 2.369rem;
-}
-
-h4 {
-  font-size: 1.777rem;
-}
-
-.g__container {
-  margin: 0 auto;
-}
-
 .g__row {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-}
-
-.g__button--primary {
-  color: #fff;
-  font-size: 1rem;
-  max-width: 10rem;
-  width: 100%;
-  padding: 11px 0 13px 0;
-  background-color: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 61, 48),
-    rgb(255, 43, 97)
-  );
-  border: 0;
-  border-radius: 8px;
-  cursor: pointer;
-  letter-spacing: 0.2px;
-}
-
-.g__button--primary:hover {
-  background-image: linear-gradient(
-    to left,
-    rgb(253, 95, 85),
-    rgb(255, 85, 128)
-  );
-}
-
-.g__button--secondary {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  color: #222;
-  font-size: 1rem;
-  max-width: 10rem;
-  width: 100%;
-  padding: 10px 0 12px 0;
-  background-color: transparent;
-  border: 1px solid #888;
-  border-radius: 8px;
-  cursor: pointer;
-  letter-spacing: 0.2px;
-}
-
-.g__button--secondary:hover {
-  border: 1px solid #222;
-  color: inherit;
 }

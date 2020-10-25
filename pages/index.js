@@ -3,7 +3,8 @@ import styles from '../styles/Home.module.css';
 
 const Home = () => {
   return (
-    <div className="g__container">
+    <div>
+      <h1>Peer to peer video chat should be simple</h1>
     </div>
   );
 };
