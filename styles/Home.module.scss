@@ -1,9 +1,10 @@
-.top {
+.splash {
   background-color: #f5f5f5;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-.splash {
+
+.splash__content {
   max-width: 1600px;
   margin: 0 auto;
   display: grid;
@@ -23,3 +24,4 @@
 .splash__img {
   max-width: 360px;
 }
+

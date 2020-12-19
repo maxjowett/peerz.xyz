@@ -3,8 +3,8 @@ import styles from '../styles/Home.module.scss';
 
 const Home = () => {
   return (
-    <div className={styles.top}>
-      <div className={styles.splash}>
+    <div className={styles.splash}>
+      <div className={styles.splash__content}>
         <div className={styles.splash__left}>
           <h1>
             Peer to peer
