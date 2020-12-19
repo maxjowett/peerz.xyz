@@ -25,3 +25,30 @@
   max-width: 360px;
 }
 
+.rundown {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.rundown__content {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.rundown__content_reasons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.rundown__content_reason {
+  border: 0.5px solid #999;
+  border-radius: 4px;
+  padding: 2rem;
+  img {
+    padding-bottom: 8px;
+  }
+  h4 {
+    margin: 0;
+  }
+}
