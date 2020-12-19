@@ -1,0 +1,25 @@
+.top {
+  background-color: #f5f5f5;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.splash {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.splash__left {
+  align-content: center;
+}
+
+.splash__right {
+  display: grid;
+  justify-self: center;
+  align-items: center;
+}
+
+.splash__img {
+  max-width: 360px;
+}
