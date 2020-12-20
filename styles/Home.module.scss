@@ -34,13 +34,10 @@
 .rundown__content_reasons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 
 .rundown__content_reason {
-  // border: 0.5px solid #999;
-  // border-radius: 4px;
-  padding: 2rem;
   img {
     padding-bottom: 8px;
   }
