@@ -52,3 +52,22 @@
     margin: 0;
   }
 }
+
+.action {
+  background-color: #222;
+  margin-top: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.action__content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #fff;
+
+  div {
+    align-self: center;
+  }
+}

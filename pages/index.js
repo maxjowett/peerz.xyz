@@ -56,6 +56,16 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className={styles.action}>
+        <div className={styles.action__content}>
+          <div>
+            <h4>No account needed, and completely free</h4>
+          </div>
+          <div>
+            <a className="g-button-primary">Create session</a>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
