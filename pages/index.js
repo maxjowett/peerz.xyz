@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.scss';
 
 const reasons = [
   {
-    title: 'Completley hassle free',
+    title: 'Hassle free',
     desc:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     icon: '/icons8-take-it-easy-64.png'
@@ -61,7 +61,7 @@ const Home = () => {
           <div>
             <h4>No account needed, and completely free</h4>
           </div>
-          <div>
+          <div className={styles.action__content_button}>
             <a className="g-button-primary">Create session</a>
           </div>
         </div>
