@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <div className={styles.splash}>
-        <div className={styles.splash__content}>
+        <div className={`${styles.splash__content} ${`g-row`}`}>
           <div className={styles.splash__left}>
             <h1>
               Peer to peer
@@ -43,7 +43,7 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.rundown}>
-        <div className={styles.rundown__content}>
+        <div className={`${styles.rundown__content} ${`g-row`}`}>
           <h3>The rundown</h3>
           <div className={styles.rundown__content_reasons}>
             {reasons.map((r, i) => (
@@ -57,7 +57,7 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.action}>
-        <div className={styles.action__content}>
+        <div className={`${styles.action__content} ${`g-row`}`}>
           <div>
             <h4>No account needed, and completely free</h4>
           </div>
